@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>pro.yavlenie</title>
+    <meta
+      name="description"
+      content="Пространство, где можно выдохнуть, услышать себя и бережно прожить сложные чувства рядом с Настей Медведевой."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260714-0211" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#hero" aria-label="pro.yavlenie">
+          <span class="brand-mark"></span>
+          <span class="brand-text">pro.yavlenie</span>
+        </a>
+        <button class="button button-secondary" type="button" data-open-modal>
+          Записаться
+        </button>
+      </header>
+
+      <main>
+        <section class="hero section" id="hero">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">практикующий психолог-консультант</p>
+            <h1>
+              <span class="hero-line">Привет!</span>
+              <span class="hero-line">
+                Я Настя, <span class="hero-strip">я психолог</span>
+              </span>
+            </h1>
+            <p class="hero-text">
+              Это моё пространство. Здесь можно немного выдохнуть и побыть
+              собой.
+            </p>
+            <p class="hero-note">
+              Онлайн · 50 минут · время только для вас
+            </p>
+            <div class="hero-actions">
+              <button class="button" type="button" data-open-modal>
+                Записаться на консультацию
+              </button>
+            </div>
+            <div class="person">
+              <strong data-therapist-name></strong>
+              <span data-therapist-role></span>
+            </div>
+          </div>
+          <div class="hero-media reveal">
+            <div
+              class="media-frame media-frame-hero"
+              data-media-frame
+              data-media-key="heroImage"
+              data-placeholder="Фотография будет добавлена"
+            ></div>
+          </div>
+        </section>
+
+        <section class="section two-column" id="about">
+          <div class="section-intro reveal">
+            <p class="eyebrow">мой путь</p>
+            <h2 class="section-title-compact">
+              Как я пришла<br />
+              в эту работу
+            </h2>
+          </div>
+          <div class="prose reveal">
+            <p>
+              Рада, что вы здесь. В личной терапии я сама уже больше 5 лет,
+              и именно она когда-то помогла мне по-настоящему услышать себя.
+            </p>
+            <p>
+              Всё началось не с профессии, а с интереса к себе. Когда-то в
+              моей жизни появилась медитация, и вместе с ней — возможность
+              замечать свои автоматические реакции, напряжение, способы
+              справляться, которые на самом деле мешали жить.
+            </p>
+            <p>
+              Я поняла, что одного наблюдения недостаточно. Мне хотелось не
+              просто видеть, что со мной происходит, а правда менять качество
+              своей жизни. Так я пришла в личную терапию.
+            </p>
+            <p>
+              Этот путь был глубоким и местами непростым. В терапии мне удалось
+              прикоснуться к своему травматическому опыту, научиться слышать
+              себя, относиться к себе бережнее и постепенно вырастить опору
+              внутри. Не стать “идеальной”, а начать быть с собой на своей
+              стороне.
+            </p>
+            <p>
+              Поэтому мне особенно близка работа там, где человеку тревожно, он
+              теряет контакт с собой, сравнивает себя с другими, не понимает,
+              чего хочет, или живёт с ощущением, что будто бы с ним что-то не
+              так.
+            </p>
+            <p>
+              Психологическое консультирование для меня — это процесс
+              проживания тяжёлых и сложных чувств в комфортных условиях. Сейчас
+              я уже работаю как психолог-консультант, продолжаю обучение,
+              прохожу супервизию у более опытных специалистов, состою в
+              профессиональном психологическом сообществе и дополнительно учусь
+              сексологии, потому что мне очень близка тема телесности и
+              контакта с собой.
+            </p>
+          </div>
+        </section>
+
+        <div class="wavy-divider reveal" aria-hidden="true"></div>
+
+        <section class="section" id="requests">
+          <div class="section-intro reveal">
+            <p class="eyebrow">запросы</p>
+            <h2>С какими запросами обращаются</h2>
+          </div>
+          <p class="section-note reveal">
+            Не обязательно заранее понимать, с чем именно хочется прийти.
+            Иногда всё начинается с одной из этих мыслей.
+          </p>
+          <div class="chips-grid reveal" data-request-list></div>
+          <div class="section-note-stack reveal">
+            <p class="section-note">
+              Если вы не нашли здесь свой запрос — это совершенно нормально.
+              Можно просто написать мне и коротко рассказать, что сейчас
+              происходит.
+            </p>
+            <p class="section-note">
+              А если запроса пока нет совсем — это тоже нормально. Иногда
+              человек приходит с ощущением, что "что-то не так", и уже вместе
+              мы постепенно понимаем, с чем хочется работать.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="approaches">
+          <div class="section-intro reveal">
+            <p class="eyebrow">подходы</p>
+            <h2><span class="scribble-bracket">На что я опираюсь в работе</span></h2>
+          </div>
+          <div class="card-grid reveal" data-approach-list></div>
+        </section>
+
+        <section class="section section-soft" id="values">
+          <div class="section-intro reveal">
+            <p class="eyebrow">важное в работе</p>
+            <h2>Что для меня важно на консультациях</h2>
+          </div>
+          <div class="values-grid reveal" data-values-list></div>
+        </section>
+
+        <section class="section" id="process">
+          <div class="section-intro reveal">
+            <p class="eyebrow">процесс</p>
+            <h2>Как это обычно проходит</h2>
+          </div>
+          <div class="steps reveal" data-process-list></div>
+          <p class="section-note reveal">
+            После первой встречи вы сможете спокойно решить, хотите ли
+            продолжать работу.
+          </p>
+        </section>
+
+        <section class="section" id="education">
+          <div class="section-intro reveal">
+            <p class="eyebrow">образование</p>
+            <h2>Образование</h2>
+          </div>
+          <div class="education-grid reveal" data-education-list></div>
+          <p class="section-note reveal">
+            Для меня образование — это не витрина, а способ честно держать
+            качество своей работы. Я продолжаю обучение, прохожу супервизию с
+            более опытными психологами и преподавателями, состою в
+            профессиональном сообществе и сейчас дополнительно учусь
+            сексологии.
+          </p>
+        </section>
+
+        <section class="section" id="life">
+          <div class="section-intro reveal">
+            <p class="eyebrow">вне кабинета</p>
+            <h2><span class="scribble-oval">Жизнь вне кабинета</span></h2>
+          </div>
+          <div class="gallery-grid reveal" data-gallery-list></div>
+          <p class="section-note reveal">
+            Мне важно оставаться живым человеком не только в профессии. Я люблю
+            движение, новые опыты, путешествия, горы, велосипед, бег, йогу,
+            медитацию и время наедине с собой. Всё это тоже помогает мне не
+            терять контакт с жизнью.
+          </p>
+        </section>
+
+        <div class="wavy-divider reveal" aria-hidden="true"></div>
+
+        <section class="section section-soft" id="format">
+          <div class="section-intro reveal">
+            <p class="eyebrow">формат</p>
+            <h2>Формат работы</h2>
+          </div>
+          <div class="format-grid reveal">
+            <article class="format-card">
+              <span>Онлайн</span>
+            </article>
+            <article class="format-card">
+              <span>50 минут</span>
+            </article>
+            <article class="format-card">
+              <span data-price-label></span>
+            </article>
+          </div>
+          <p class="section-note reveal">
+            Встречи можно проводить раз в неделю или раз в две недели — в том
+            ритме, который будет комфортен и уместен именно для вас.
+          </p>
+        </section>
+
+        <section class="section cta-section" id="contact">
+          <div class="cta-card reveal">
+            <p class="eyebrow">приглашение к разговору</p>
+            <h2>
+              Когда устанешь -
+              <span class="scribble-underline">приходи</span>
+            </h2>
+            <p>
+              Я правда верю, что все ответы уже есть внутри нас. Иногда нужен
+              другой человек рядом, чтобы услышать их яснее и чуть спокойнее
+              дойти до себя.
+            </p>
+            <button class="button" type="button" data-open-modal>
+              Записаться на консультацию
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" data-modal aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-title"
+      >
+        <button class="modal-close" type="button" aria-label="Закрыть" data-close-modal>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="modal-content" data-form-state="form">
+          <p class="eyebrow">запись</p>
+          <h3 id="booking-title">Запись на консультацию</h3>
+          <p class="modal-text">
+            Оставьте контакты, и я напишу вам в течение 24 часов.
+          </p>
+          <form class="booking-form" data-booking-form>
+            <label>
+              <span>Имя</span>
+              <input name="name" type="text" required placeholder="Ваше имя" />
+            </label>
+            <label>
+              <span>Telegram или телефон</span>
+              <input
+                name="contact"
+                type="text"
+                required
+                placeholder="@telegram или +7..."
+              />
+            </label>
+            <label>
+              <span>С чем хотите обратиться?</span>
+              <textarea
+                name="request"
+                rows="4"
+                placeholder="Если хотите, можно коротко описать запрос"
+              ></textarea>
+            </label>
+            <button class="button" type="submit">Отправить заявку</button>
+          </form>
+          <p class="form-helper" data-contact-hint></p>
+        </div>
+        <div class="modal-content modal-success" data-form-state="success" hidden>
+          <p class="eyebrow">спасибо</p>
+          <h3>Спасибо.</h3>
+          <p>Я свяжусь с вами в ближайшее время.</p>
+          <button class="button" type="button" data-close-modal>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="image-viewer" data-image-viewer aria-hidden="true">
+      <div class="modal-backdrop" data-close-viewer></div>
+      <div class="viewer-dialog">
+        <button class="modal-close" type="button" aria-label="Закрыть" data-close-viewer>
+          <span></span>
+          <span></span>
+        </button>
+        <img alt="" data-viewer-image />
+      </div>
+    </div>
+
+    <script src="./config.js?v=20260714-0211"></script>
+    <script src="./script.js?v=20260714-0211"></script>
+  </body>
+</html>

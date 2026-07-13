@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.venv/
+tmp/
+output/
+_photo_review/
+анимации/
+карусели/
+*.docx
+план-контента-10-дней.html
+план-контента-10-дней.md
