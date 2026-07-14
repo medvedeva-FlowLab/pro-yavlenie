@@ -147,6 +147,6 @@ window.siteConfig = {
   ],
   integrations: {
     emailEndpoint: "",
-    telegramBotEndpoint: "",
+    telegramBotEndpoint: "/api/booking",
   },
 };

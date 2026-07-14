@@ -411,7 +411,7 @@
       } catch (error) {
         console.error(error);
         window.alert(
-          "Не удалось отправить заявку. Проверьте настройки интеграции в config.js."
+          "Не удалось отправить заявку. Проверьте, что Telegram-бот подключён и настроен в Vercel."
         );
       } finally {
         submitButton.disabled = false;
