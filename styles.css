@@ -143,7 +143,7 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
   gap: 42px;
-  align-items: end;
+  align-items: center;
   min-height: calc(100vh - 130px);
   padding-top: 8px;
 }
@@ -151,10 +151,10 @@ a {
 .hero-copy {
   position: relative;
   display: grid;
-  align-content: end;
+  align-content: center;
   gap: 0;
   min-height: 100%;
-  padding: 20px 12px 28px;
+  padding: 44px 12px 28px;
 }
 
 .hero-copy::before {
@@ -179,6 +179,7 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  align-self: end;
 }
 
 .hero-media::after {
@@ -201,6 +202,10 @@ a {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  max-width: 30ch;
 }
 
 h1,
@@ -455,7 +460,7 @@ h3 {
 .section-intro {
   display: grid;
   gap: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   min-width: 0;
 }
 
@@ -532,21 +537,21 @@ h3 {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  gap: 18px;
 }
 
 .card {
   position: relative;
   display: grid;
-  gap: 14px;
+  gap: 10px;
   min-height: 100%;
-  padding: 26px 2px 0;
+  padding: 18px 2px 0;
   border-top: 1.5px solid var(--line-strong);
   background: none;
 }
 
 .card:nth-child(2) {
-  margin-top: 34px;
+  margin-top: 16px;
 }
 
 .card h3,
@@ -657,13 +662,13 @@ h3 {
 .education-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(220px, 300px));
-  gap: 28px 30px;
+  gap: 20px 26px;
   align-items: start;
   justify-content: start;
 }
 
 #education .section-note {
-  margin-top: 12px;
+  margin-top: 6px;
 }
 
 .education-card {
@@ -853,6 +858,23 @@ h3 {
 .cta-card p {
   max-width: 32rem;
   margin: 16px 0 28px;
+}
+
+#approaches {
+  padding-bottom: 40px;
+}
+
+#approaches .section-intro {
+  margin-bottom: 22px;
+}
+
+#values {
+  margin-top: 0;
+  padding-top: 44px;
+}
+
+#values .section-intro {
+  margin-bottom: 24px;
 }
 
 .scribble-underline,

@@ -382,8 +382,6 @@
   };
 
   const init = () => {
-    setText("[data-therapist-name]", config.therapist.name);
-    setText("[data-therapist-role]", config.therapist.role);
     setMarkup("[data-price-label]", config.pricing.label);
     setText("[data-contact-hint]", getContactHint());
 
