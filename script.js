@@ -6,6 +6,7 @@
   const bookingForm = document.querySelector("[data-booking-form]");
   const formPanels = document.querySelectorAll("[data-form-state]");
   const viewerImage = document.querySelector("[data-viewer-image]");
+  const choiceFeedback = document.querySelector("[data-choice-feedback]");
 
   const setText = (selector, value) => {
     const node = document.querySelector(selector);
@@ -187,7 +188,10 @@
   };
 
   const openModal = () => {
-    setFormState("form");
+    setFormState("choices");
+    if (choiceFeedback) {
+      choiceFeedback.textContent = "";
+    }
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     body.classList.add("modal-open");
@@ -197,7 +201,10 @@
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     body.classList.remove("modal-open");
-    setFormState("form");
+    setFormState("choices");
+    if (choiceFeedback) {
+      choiceFeedback.textContent = "";
+    }
   };
 
   const openViewer = (src, alt) => {
@@ -227,7 +234,7 @@
     });
   };
 
-  const getBookingUrl = () => {
+  const getTelegramUrl = () => {
     const directLink = (config.contacts.bookingLink || "").trim();
     if (directLink) {
       return directLink;
@@ -250,14 +257,51 @@
   };
 
   const openBooking = () => {
-    const bookingUrl = getBookingUrl();
+    openModal();
+  };
 
-    if (bookingUrl) {
-      window.open(bookingUrl, "_blank", "noopener,noreferrer");
+  const openTelegram = () => {
+    const telegramUrl = getTelegramUrl();
+    if (!telegramUrl) {
+      if (choiceFeedback) {
+        choiceFeedback.textContent = "Telegram пока не подключён.";
+      }
       return;
     }
 
-    openModal();
+    window.open(telegramUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const copyPhone = async () => {
+    const phone = (config.contacts.phone || "").trim();
+    if (!phone) {
+      if (choiceFeedback) {
+        choiceFeedback.textContent = "Номер телефона пока не добавлен.";
+      }
+      return;
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(phone);
+      } else {
+        const helperInput = document.createElement("input");
+        helperInput.value = phone;
+        document.body.appendChild(helperInput);
+        helperInput.select();
+        document.execCommand("copy");
+        helperInput.remove();
+      }
+
+      if (choiceFeedback) {
+        choiceFeedback.textContent = `Номер ${phone} скопирован. Его можно использовать для связи в MAX или по телефону.`;
+      }
+    } catch (error) {
+      console.error(error);
+      if (choiceFeedback) {
+        choiceFeedback.textContent = `Можно написать или позвонить по номеру ${phone}.`;
+      }
+    }
   };
 
   const submitToIntegrations = async (payload) => {
@@ -305,6 +349,22 @@
       button.addEventListener("click", openBooking);
     });
 
+    document.querySelectorAll("[data-open-form]").forEach((button) => {
+      button.addEventListener("click", () => setFormState("form"));
+    });
+
+    document.querySelectorAll("[data-back-to-choices]").forEach((button) => {
+      button.addEventListener("click", () => setFormState("choices"));
+    });
+
+    document.querySelectorAll("[data-open-telegram]").forEach((button) => {
+      button.addEventListener("click", openTelegram);
+    });
+
+    document.querySelectorAll("[data-copy-phone]").forEach((button) => {
+      button.addEventListener("click", copyPhone);
+    });
+
     document.querySelectorAll("[data-close-modal]").forEach((button) => {
       button.addEventListener("click", closeModal);
     });
@@ -337,7 +397,8 @@
 
       const formData = new FormData(bookingForm);
       const payload = {
-        name: formData.get("name"),
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
         contact: formData.get("contact"),
         request: formData.get("request"),
         sentAt: new Date().toISOString(),
@@ -384,6 +445,8 @@
   const init = () => {
     setMarkup("[data-price-label]", config.pricing.label);
     setText("[data-contact-hint]", getContactHint());
+    setText("[data-telegram-label]", config.contacts.telegram || "Telegram");
+    setText("[data-phone-label]", config.contacts.phone || "");
 
     const heroFrame = document.querySelector('[data-media-key="heroImage"]');
     if (heroFrame) {

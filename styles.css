@@ -1032,6 +1032,46 @@ h3 {
   margin-top: 24px;
 }
 
+.contact-options {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.contact-option {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 18px 20px;
+  text-align: left;
+  border: 1px solid rgba(53, 47, 43, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  transition:
+    transform var(--ease),
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+.contact-option:hover,
+.contact-option:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(185, 133, 112, 0.34);
+  box-shadow: 0 14px 28px rgba(79, 60, 41, 0.08);
+}
+
+.contact-option strong {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.contact-option span {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .booking-form label {
   display: grid;
   gap: 8px;
@@ -1063,6 +1103,18 @@ h3 {
 .form-helper {
   margin: 16px 0 0;
   font-size: 0.92rem;
+}
+
+.booking-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button-ghost {
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--text);
+  border: 1px solid rgba(53, 47, 43, 0.12);
 }
 
 .reveal {

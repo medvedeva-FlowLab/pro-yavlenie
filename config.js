@@ -10,10 +10,10 @@ window.siteConfig = {
   contacts: {
     bookingLink: "https://t.me/aanastasia_me",
     telegram: "@aanastasia_me",
-    phone: "",
+    phone: "+79858852191",
     email: "",
     hint:
-      "Контакты и интеграции редактируются в файле config.js. Здесь можно подключить email или Telegram-бота.",
+      "Если удобнее, можно сразу написать мне в Telegram или в MAX.",
   },
   media: {
     heroImage: "./assets/photos/hero-anastasia-cutout-v4.png",
