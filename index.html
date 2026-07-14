@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260714-1524" />
+    <link rel="stylesheet" href="./styles.css?v=20260714-1615" />
   </head>
   <body>
     <div class="page-shell">
@@ -259,61 +259,13 @@
               <strong>Написать в MAX</strong>
               <span data-phone-label></span>
             </button>
-            <button class="contact-option" type="button" data-open-form>
-              <strong>Оставить заявку</strong>
-              <span>Имя, фамилия, контакт и запрос, если хотите его описать</span>
+            <button class="contact-option" type="button" data-call-phone>
+              <strong>Позвонить</strong>
+              <span data-phone-label></span>
             </button>
           </div>
           <p class="form-helper" data-choice-feedback></p>
-        </div>
-        <div class="modal-content" data-form-state="form" hidden>
-          <p class="eyebrow">запись</p>
-          <h3>Оставить заявку</h3>
-          <p class="modal-text">
-            Оставьте контакты, и я напишу вам в течение 24 часов.
-          </p>
-          <form class="booking-form" data-booking-form>
-            <label>
-              <span>Имя</span>
-              <input name="firstName" type="text" required placeholder="Ваше имя" />
-            </label>
-            <label>
-              <span>Фамилия</span>
-              <input name="lastName" type="text" placeholder="Ваша фамилия" />
-            </label>
-            <label>
-              <span>Контакт для связи</span>
-              <input
-                name="contact"
-                type="text"
-                required
-                placeholder="@telegram, MAX или +7..."
-              />
-            </label>
-            <label>
-              <span>Запрос, если хотите его описать</span>
-              <textarea
-                name="request"
-                rows="4"
-                placeholder="Если хотите, можно коротко описать запрос"
-              ></textarea>
-            </label>
-            <div class="booking-form-actions">
-              <button class="button" type="submit">Отправить заявку</button>
-              <button class="button button-secondary button-ghost" type="button" data-back-to-choices>
-                Назад
-              </button>
-            </div>
-          </form>
           <p class="form-helper" data-contact-hint></p>
-        </div>
-        <div class="modal-content modal-success" data-form-state="success" hidden>
-          <p class="eyebrow">спасибо</p>
-          <h3>Спасибо.</h3>
-          <p>Я свяжусь с вами в ближайшее время.</p>
-          <button class="button" type="button" data-close-modal>
-            Закрыть
-          </button>
         </div>
       </div>
     </div>
@@ -329,7 +281,7 @@
       </div>
     </div>
 
-    <script src="./config.js?v=20260714-1524"></script>
-    <script src="./script.js?v=20260714-1524"></script>
+    <script src="./config.js?v=20260714-1615"></script>
+    <script src="./script.js?v=20260714-1615"></script>
   </body>
 </html>

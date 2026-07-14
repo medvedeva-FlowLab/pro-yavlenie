@@ -3,7 +3,6 @@
   const body = document.body;
   const modal = document.querySelector("[data-modal]");
   const imageViewer = document.querySelector("[data-image-viewer]");
-  const bookingForm = document.querySelector("[data-booking-form]");
   const formPanels = document.querySelectorAll("[data-form-state]");
   const viewerImage = document.querySelector("[data-viewer-image]");
   const choiceFeedback = document.querySelector("[data-choice-feedback]");
@@ -304,30 +303,16 @@
     }
   };
 
-  const submitToIntegrations = async (payload) => {
-    const endpoints = [
-      config.integrations.emailEndpoint,
-      config.integrations.telegramBotEndpoint,
-    ].filter(Boolean);
-
-    if (!endpoints.length) {
-      console.info("Booking payload", payload);
+  const callPhone = () => {
+    const phone = (config.contacts.phone || "").trim();
+    if (!phone) {
+      if (choiceFeedback) {
+        choiceFeedback.textContent = "Номер телефона пока не добавлен.";
+      }
       return;
     }
 
-    await Promise.all(
-      endpoints.map((endpoint) =>
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }).then((response) => {
-          if (!response.ok) {
-            throw new Error(`Integration request failed: ${response.status}`);
-          }
-        })
-      )
-    );
+    window.location.href = `tel:${phone.replace(/\s+/g, "")}`;
   };
 
   const getContactHint = () => {
@@ -349,20 +334,16 @@
       button.addEventListener("click", openBooking);
     });
 
-    document.querySelectorAll("[data-open-form]").forEach((button) => {
-      button.addEventListener("click", () => setFormState("form"));
-    });
-
-    document.querySelectorAll("[data-back-to-choices]").forEach((button) => {
-      button.addEventListener("click", () => setFormState("choices"));
-    });
-
     document.querySelectorAll("[data-open-telegram]").forEach((button) => {
       button.addEventListener("click", openTelegram);
     });
 
     document.querySelectorAll("[data-copy-phone]").forEach((button) => {
       button.addEventListener("click", copyPhone);
+    });
+
+    document.querySelectorAll("[data-call-phone]").forEach((button) => {
+      button.addEventListener("click", callPhone);
     });
 
     document.querySelectorAll("[data-close-modal]").forEach((button) => {
@@ -385,37 +366,6 @@
       if (event.key === "Escape") {
         closeModal();
         closeViewer();
-      }
-    });
-
-    bookingForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const submitButton = bookingForm.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.textContent = "Отправляем...";
-
-      const formData = new FormData(bookingForm);
-      const payload = {
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName"),
-        contact: formData.get("contact"),
-        request: formData.get("request"),
-        sentAt: new Date().toISOString(),
-      };
-
-      try {
-        await submitToIntegrations(payload);
-        bookingForm.reset();
-        setFormState("success");
-      } catch (error) {
-        console.error(error);
-        window.alert(
-          "Не удалось отправить заявку. Проверьте, что Telegram-бот подключён и настроен в Vercel."
-        );
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Отправить заявку";
       }
     });
   };
