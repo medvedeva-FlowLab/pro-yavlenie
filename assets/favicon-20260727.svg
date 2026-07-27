@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Иконка сайта Анастасии Медведевой">
+  <defs>
+    <linearGradient id="bg" x1="12" y1="10" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffaf4" />
+      <stop offset="1" stop-color="#f3e7da" />
+    </linearGradient>
+    <linearGradient id="heart" x1="20" y1="18" x2="44" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#efb293" />
+      <stop offset="1" stop-color="#d57b5f" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.2" />
+    </filter>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#bg)" />
+  <circle cx="45" cy="18" r="7" fill="#fde8cf" opacity="0.85" filter="url(#glow)" />
+  <path
+    d="M32 49.5c-.8 0-1.6-.28-2.23-.84L16.3 36.22C12.15 32.37 10 29.1 10 25.36 10 20.1 14.06 16 19.2 16c3 0 5.88 1.37 7.8 3.56L32 24.2l5-4.64C38.92 17.37 41.8 16 44.8 16 49.94 16 54 20.1 54 25.36c0 3.74-2.15 7-6.3 10.86L34.23 48.66c-.63.56-1.43.84-2.23.84Z"
+    fill="url(#heart)"
+    stroke="#cb7157"
+    stroke-linejoin="round"
+    stroke-width="1.2"
+  />
+</svg>
