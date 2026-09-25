@@ -156,6 +156,8 @@
               >
                 Открыть диплом
               </button>
+              ${item.pdf ? `<a class="link-button" href="${item.pdf}" target="_blank" rel="noopener">Диплом в PDF</a>` : ""}
+              ${item.supplement ? `<a class="link-button" href="${item.supplement}" target="_blank" rel="noopener">Приложение к диплому (PDF)</a>` : ""}
             </div>
           </article>
         `

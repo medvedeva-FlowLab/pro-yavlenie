@@ -29,6 +29,13 @@ window.siteConfig = {
         image: "./assets/diplomas/qualification-diploma-spread.jpg",
         alt: "Диплом психолога-консультанта",
       },
+      {
+        title: "Международный диплом по психологическому консультированию",
+        image: "./assets/diplomas/international-psychology-diploma.jpg",
+        alt: "Диплом Анастасии Медведевой — Psychological Guidance & Counselling",
+        pdf: "./assets/diplomas/international-psychology-diploma.pdf",
+        supplement: "./assets/diplomas/international-psychology-supplement.pdf",
+      },
     ],
     gallery: [
       {
