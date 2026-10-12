@@ -4,12 +4,14 @@
   const status = document.getElementById('leadStatus');
   const submit = form?.querySelector('[type="submit"]');
   const nameInput = document.getElementById('leadName');
+  const telegramMessage = 'Здравствуйте, Настя! Мне интересна программа про тревогу. Хотелось бы познакомиться и понять, подойдёт ли мне такой формат 🌿';
+  const telegramUrl = `https://t.me/aanastasia_me?text=${encodeURIComponent(telegramMessage)}`;
   let returnFocus = null;
 
   document.querySelectorAll('[data-open-lead]').forEach((button) => {
     button.addEventListener('click', () => {
       if (!form?.dataset.endpoint?.trim()) {
-        window.open('https://t.me/aanastasia_me', '_blank', 'noopener,noreferrer');
+        window.open(telegramUrl, '_blank', 'noopener,noreferrer');
         return;
       }
       returnFocus = button;
@@ -33,7 +35,7 @@
 
     const endpoint = form.dataset.endpoint?.trim();
     if (!endpoint) {
-      status.innerHTML = 'Запись через сайт скоро заработает. Пока можно <a href="https://t.me/aanastasia_me" target="_blank" rel="noopener noreferrer">написать мне в Telegram</a>.';
+      status.innerHTML = `Запись через сайт скоро заработает. Пока можно <a href="${telegramUrl}" target="_blank" rel="noopener noreferrer">написать мне в Telegram</a>.`;
       status.dataset.state = 'error';
       return;
     }
@@ -70,7 +72,7 @@
       status.dataset.state = 'success';
       form.reset();
     } catch (error) {
-      status.innerHTML = 'Заявка не отправилась. Попробуйте ещё раз или <a href="https://t.me/aanastasia_me" target="_blank" rel="noopener noreferrer">напишите мне в Telegram</a>.';
+      status.innerHTML = `Заявка не отправилась. Попробуйте ещё раз или <a href="${telegramUrl}" target="_blank" rel="noopener noreferrer">напишите мне в Telegram</a>.`;
       status.dataset.state = 'error';
     } finally {
       submit.disabled = false;
