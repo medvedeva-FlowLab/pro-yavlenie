@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css?v=1" />
     <link rel="stylesheet" href="./refinement.css?v=7" />
+    <link rel="stylesheet" href="./analytics.css?v=1" />
+    <script src="./analytics.js?v=1" defer></script>
     <script src="./script.js?v=3" defer></script>
   </head>
   <body>
@@ -233,7 +235,12 @@
         </section>
       </main>
 
-      <footer class="site-footer"><a class="brand" href="../"><span class="brand-dot" aria-hidden="true"></span><span>пространство для себя</span></a><p>Анастасия Медведева · психолог-консультант</p><span>© 2026</span></footer>
+      <footer class="site-footer"><a class="brand" href="../"><span class="brand-dot" aria-hidden="true"></span><span>пространство для себя</span></a><p>Анастасия Медведева · психолог-консультант</p><a href="../privacy/">Обработка данных</a><button class="analytics-settings" type="button" data-analytics-settings hidden>Настройки статистики</button><span>© 2026</span></footer>
+    </div>
+
+    <div class="analytics-notice" data-analytics-notice hidden>
+      <p>С вашего разрешения Яндекс Метрика поможет понять, откуда приходят посетители, какие разделы смотрят и нажимают ли на запись. Без разрешения счётчик не загружается. Подробнее — в <a href="../privacy/">информации об обработке данных</a>.</p>
+      <div class="analytics-actions"><button type="button" data-analytics-decline>Не разрешать</button><button type="button" data-analytics-accept>Разрешить</button></div>
     </div>
 
     <dialog class="lead-dialog" id="leadDialog" aria-labelledby="dialog-title">
