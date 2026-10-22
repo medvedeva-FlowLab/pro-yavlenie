@@ -1,4 +1,3 @@
-import io
 import json
 import os
 import unittest
@@ -38,15 +37,16 @@ class HandlerTests(unittest.TestCase):
         self.payload['contactMethod'] = 'telegram'
         self.assertEqual(index.handler(event(self.payload), None)['statusCode'], 400)
 
-    @patch.dict(os.environ, {'TELEGRAM_BOT_TOKEN': 'test-token', 'TELEGRAM_CHAT_ID': '123'})
-    @patch('index.urllib.request.urlopen')
-    def test_sends_valid_request(self, urlopen):
-        urlopen.return_value.__enter__.return_value = io.BytesIO(b'{"ok":true}')
+    @patch.dict(os.environ, {'YANDEX_MAIL_APP_PASSWORD': 'test-password'})
+    @patch('index.smtplib.SMTP_SSL')
+    def test_sends_valid_request(self, smtp_ssl):
         self.assertEqual(index.handler(event(self.payload), None)['statusCode'], 200)
-        request = urlopen.call_args.args[0]
-        self.assertIn('/sendMessage', request.full_url)
-        self.assertIn('Тест', request.data.decode('utf-8'))
-        self.assertIn('WhatsApp', request.data.decode('utf-8'))
+        smtp = smtp_ssl.return_value.__enter__.return_value
+        smtp.login.assert_called_once_with('fly.medvedeva@yandex.ru', 'test-password')
+        letter = smtp.send_message.call_args.args[0]
+        self.assertEqual(letter['To'], 'fly.medvedeva@yandex.ru')
+        self.assertIn('Тест', letter.get_content())
+        self.assertIn('WhatsApp', letter.get_content())
 
 
 if __name__ == '__main__':

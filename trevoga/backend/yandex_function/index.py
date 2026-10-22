@@ -1,9 +1,10 @@
-"""Yandex Cloud Function: receive a landing request and notify Anastasia in Telegram."""
+"""Yandex Cloud Function: receive a landing request and email Anastasia."""
+from email.message import EmailMessage
 import json
 import os
 import re
-import urllib.error
-import urllib.request
+import smtplib
+import ssl
 
 ALLOWED_ORIGIN = 'https://anastasiamedvedeva.ru'
 MAX_BODY_BYTES = 4096
@@ -69,9 +70,8 @@ def handler(event, context):
     if data.get('source') != 'trevoga':
         return response(400, {'error': 'invalid_source'}, origin)
 
-    token = os.environ.get('TELEGRAM_BOT_TOKEN')
-    chat_id = os.environ.get('TELEGRAM_CHAT_ID')
-    if not token or not chat_id:
+    mail_password = os.environ.get('YANDEX_MAIL_APP_PASSWORD')
+    if not mail_password:
         return response(503, {'error': 'service_unavailable'}, origin)
 
     contact_labels = {'telegram': 'Telegram', 'whatsapp': 'WhatsApp',
@@ -84,17 +84,16 @@ def handler(event, context):
         *([f'Telegram: {telegram}'] if contact_method == 'telegram' else []),
         f'Запрос: {message or "не указан"}',
     ])
-    request = urllib.request.Request(
-        f'https://api.telegram.org/bot{token}/sendMessage',
-        data=json.dumps({'chat_id': chat_id, 'text': text}, ensure_ascii=False).encode('utf-8'),
-        headers={'Content-Type': 'application/json; charset=utf-8'},
-        method='POST',
-    )
+    letter = EmailMessage()
+    letter['Subject'] = 'Новая заявка с сайта · программа «Тревога»'
+    letter['From'] = 'fly.medvedeva@yandex.ru'
+    letter['To'] = 'fly.medvedeva@yandex.ru'
+    letter.set_content(text)
     try:
-        with urllib.request.urlopen(request, timeout=8) as telegram_response:
-            result = json.load(telegram_response)
-            if not result.get('ok'):
-                return response(502, {'error': 'delivery_failed'}, origin)
-    except (urllib.error.URLError, ValueError, TimeoutError):
+        with smtplib.SMTP_SSL('smtp.yandex.ru', 465, timeout=8,
+                             context=ssl.create_default_context()) as smtp:
+            smtp.login('fly.medvedeva@yandex.ru', mail_password)
+            smtp.send_message(letter)
+    except (smtplib.SMTPException, OSError):
         return response(502, {'error': 'delivery_failed'}, origin)
     return response(200, {'ok': True}, origin)
