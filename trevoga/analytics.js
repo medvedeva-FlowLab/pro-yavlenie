@@ -82,6 +82,10 @@
   document.querySelectorAll('[data-open-lead]').forEach((button) => {
     button.addEventListener('click', () => track('anxiety_intro_click'));
   });
+  document.querySelectorAll('[data-messenger]').forEach((link) => {
+    link.addEventListener('click', () => track(`anxiety_${link.dataset.messenger}_click`));
+  });
+  document.addEventListener('anxiety:leadSent', () => track('anxiety_lead_sent'));
   document.querySelector('.consultation-alternative a')?.addEventListener('click', () => {
     track('anxiety_consultation_click');
   });
