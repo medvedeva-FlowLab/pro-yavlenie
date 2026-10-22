@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="./styles.css?v=1" />
     <link rel="stylesheet" href="./refinement.css?v=7" />
     <link rel="stylesheet" href="./analytics.css?v=1" />
-    <script src="./analytics.js?v=1" defer></script>
-    <script src="./script.js?v=3" defer></script>
+    <script src="./analytics.js?v=2" defer></script>
+    <script src="./script.js?v=4" defer></script>
+    <link rel="stylesheet" href="./contact.css?v=1" />
   </head>
   <body>
     <div class="site-wrap">
@@ -245,11 +246,26 @@
 
     <dialog class="lead-dialog" id="leadDialog" aria-labelledby="dialog-title">
       <button class="dialog-close" type="button" data-close-lead aria-label="Закрыть окно">×</button>
-      <div class="dialog-content"><p class="eyebrow">Бесплатно · онлайн</p><h2 id="dialog-title">20-минутное знакомство</h2><p class="dialog-lead">Коротко обсудим ваш запрос, я отвечу на вопросы о программе, и вместе проверим, подходит ли вам формат и комфортно ли нам работать вместе.</p>
-        <form id="leadForm" data-endpoint="" autocomplete="on">
-          <label for="leadName">Как к вам обращаться <span>*</span></label><input id="leadName" name="name" type="text" maxlength="80" autocomplete="name" required />
-          <label for="leadContact">Как с вами связаться <span>*</span></label><input id="leadContact" name="contact" type="text" maxlength="160" placeholder="Телефон, email или Telegram" required /><p class="field-hint">Я напишу вам сама, чтобы договориться о времени.</p>
-          <label for="leadMessage">Что хотите обсудить <em>(необязательно)</em></label><textarea id="leadMessage" name="message" rows="3" maxlength="500" placeholder="Можно коротко и без личных подробностей"></textarea>
+      <div class="dialog-content"><p class="eyebrow">Бесплатно · онлайн</p><h2 id="dialog-title">20-минутное знакомство</h2><p class="dialog-lead">Выберите, как вам удобнее познакомиться: напишите мне сами или оставьте заявку, и я свяжусь с вами.</p>
+        <div class="contact-tabs" role="tablist" aria-label="Способ записи">
+          <button id="contactTabWrite" type="button" role="tab" aria-selected="true" aria-controls="contactPanelWrite" data-contact-tab="write">Написать мне</button>
+          <button id="contactTabForm" type="button" role="tab" aria-selected="false" aria-controls="contactPanelForm" data-contact-tab="form">Оставить заявку</button>
+        </div>
+        <div id="contactPanelWrite" role="tabpanel" aria-labelledby="contactTabWrite" class="contact-panel">
+          <p class="contact-panel-intro">Можно написать пару слов о себе и своём вопросе. Договоримся о времени и спокойно обсудим формат работы.</p>
+          <div class="messenger-links">
+            <a data-messenger="telegram" href="https://t.me/aanastasia_me" target="_blank" rel="noopener noreferrer">Telegram <span aria-hidden="true">↗</span></a>
+            <a data-messenger="whatsapp" href="https://wa.me/79858852191" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+            <a data-messenger="max" href="https://max.ru/u/f9LHodD0cOLZq9Ikz2e7jjzeYqa6h8OZn04OaJ_9F45T17eP2spBvx3SBcM" target="_blank" rel="noopener noreferrer">MAX <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <form id="leadForm" class="contact-panel" role="tabpanel" aria-labelledby="contactTabForm" data-endpoint="https://functions.yandexcloud.net/d4e8vochmnccb7p5mlt4" autocomplete="on" hidden>
+          <p class="contact-panel-intro">Оставьте контакт, и я сама напишу вам, чтобы договориться о знакомстве.</p>
+          <div class="name-fields"><div><label for="leadName">Имя <span>*</span></label><input id="leadName" name="name" type="text" maxlength="80" autocomplete="given-name" required /></div><div><label for="leadSurname">Фамилия <span>*</span></label><input id="leadSurname" name="surname" type="text" maxlength="80" autocomplete="family-name" required /></div></div>
+          <label for="leadPhone">Номер телефона <span>*</span></label><input id="leadPhone" name="phone" type="tel" maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+7 999 123-45-67" required />
+          <label for="leadContactMethod">Как удобнее ответить <span>*</span></label><select id="leadContactMethod" name="contactMethod" required><option value="" selected disabled>Выберите способ связи</option><option value="telegram">Telegram</option><option value="whatsapp">WhatsApp</option><option value="max">MAX</option><option value="phone">Телефонный звонок</option></select>
+          <div id="leadTelegramField" hidden><label for="leadTelegram">Ваш @username в Telegram <span>*</span></label><input id="leadTelegram" name="telegram" type="text" maxlength="80" autocomplete="off" placeholder="@username" /><p class="field-hint">По номеру телефона вас не всегда можно найти в Telegram.</p></div>
+          <label for="leadMessage">Предполагаемый запрос <em>(необязательно)</em></label><textarea id="leadMessage" name="message" rows="3" maxlength="300" placeholder="Можно очень коротко и без личных или медицинских подробностей"></textarea>
           <div class="trap-field" aria-hidden="true"><label for="leadCompany">Компания</label><input id="leadCompany" name="company" type="text" tabindex="-1" autocomplete="off" /></div>
           <label class="consent-row"><input id="leadConsent" name="consent" type="checkbox" required /><span>Согласна(ен) на обработку данных из заявки, чтобы Анастасия могла связаться со мной. <a href="../privacy/">Политика обработки персональных данных</a>.</span></label>
           <button class="button button-primary form-submit" type="submit">Отправить заявку</button>

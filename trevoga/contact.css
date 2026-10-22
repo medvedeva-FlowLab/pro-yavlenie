@@ -1,0 +1,17 @@
+.lead-dialog [hidden]{display:none!important}
+.lead-dialog{width:min(620px,calc(100% - 28px))}
+.contact-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin:8px 0 24px;background:#eaece4;border-radius:13px}
+.contact-tabs button{min-height:46px;padding:10px 13px;border:0;border-radius:9px;background:transparent;color:#5e665c;font-size:.84rem;font-weight:800;text-align:center}
+.contact-tabs button[aria-selected=true]{background:var(--paper);color:var(--ink);box-shadow:0 2px 9px #38422e15}
+.contact-tabs button:focus-visible,.messenger-links a:focus-visible{outline:2px solid #677852;outline-offset:2px}
+.contact-panel-intro{margin:0 0 18px;color:var(--muted);font-size:.88rem}
+.messenger-links{display:grid;gap:9px}
+.messenger-links a{display:flex;justify-content:space-between;align-items:center;min-height:57px;padding:15px 18px;border:1px solid #cbd4c7;border-radius:12px;background:#eef2eb;text-decoration:none;font-size:.91rem;font-weight:800;transition:background .2s,transform .2s}
+.messenger-links a:hover{background:#e2eadd;transform:translateY(-1px)}
+.messenger-links a span{color:#65795c;font-size:1.2rem}
+.lead-dialog .name-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lead-dialog .name-fields>div,.lead-dialog #leadTelegramField{display:grid;gap:9px}
+.lead-dialog .name-fields label,.lead-dialog #leadTelegramField label{font-size:.8rem;font-weight:800;margin-top:7px}
+.lead-dialog input[type=tel],.lead-dialog select{width:100%;min-width:0;background:#fff;border:1px solid #d8cec4;border-radius:9px;padding:12px 13px;font-size:.9rem;color:var(--ink)}
+.lead-dialog input:focus-visible,.lead-dialog textarea:focus-visible,.lead-dialog select:focus-visible{outline:2px solid #738368;outline-offset:1px}
+@media(max-width:500px){.contact-tabs button{font-size:.77rem}.lead-dialog .name-fields{grid-template-columns:1fr;gap:2px}}
