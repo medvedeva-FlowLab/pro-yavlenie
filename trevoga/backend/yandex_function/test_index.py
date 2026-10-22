@@ -15,7 +15,8 @@ def event(payload, origin=ORIGIN):
 
 class HandlerTests(unittest.TestCase):
     def setUp(self):
-        self.payload = {'name': 'Тест', 'contact': '@test', 'message': '',
+        self.payload = {'name': 'Тест', 'surname': 'Тестова', 'phone': '+7 985 885-21-91',
+                        'contactMethod': 'whatsapp', 'telegram': '', 'message': '',
                         'consent': True, 'company': '', 'source': 'trevoga'}
 
     def test_rejects_other_origin(self):
@@ -29,6 +30,14 @@ class HandlerTests(unittest.TestCase):
         self.payload['company'] = 'spam'
         self.assertEqual(index.handler(event(self.payload), None)['statusCode'], 200)
 
+    def test_rejects_invalid_phone(self):
+        self.payload['phone'] = 'abc'
+        self.assertEqual(index.handler(event(self.payload), None)['statusCode'], 400)
+
+    def test_requires_telegram_username_when_selected(self):
+        self.payload['contactMethod'] = 'telegram'
+        self.assertEqual(index.handler(event(self.payload), None)['statusCode'], 400)
+
     @patch.dict(os.environ, {'TELEGRAM_BOT_TOKEN': 'test-token', 'TELEGRAM_CHAT_ID': '123'})
     @patch('index.urllib.request.urlopen')
     def test_sends_valid_request(self, urlopen):
@@ -37,6 +46,7 @@ class HandlerTests(unittest.TestCase):
         request = urlopen.call_args.args[0]
         self.assertIn('/sendMessage', request.full_url)
         self.assertIn('Тест', request.data.decode('utf-8'))
+        self.assertIn('WhatsApp', request.data.decode('utf-8'))
 
 
 if __name__ == '__main__':

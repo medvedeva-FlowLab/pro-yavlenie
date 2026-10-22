@@ -1,6 +1,7 @@
 """Yandex Cloud Function: receive a landing request and notify Anastasia in Telegram."""
 import json
 import os
+import re
 import urllib.error
 import urllib.request
 
@@ -52,10 +53,19 @@ def handler(event, context):
         return response(200, {'ok': True}, origin)
 
     name = clean(data.get('name'), 80)
-    contact = clean(data.get('contact'), 160)
-    message = clean(data.get('message'), 500)
-    if not name or not contact or data.get('consent') is not True:
+    surname = clean(data.get('surname'), 80)
+    phone = clean(data.get('phone'), 30)
+    contact_method = clean(data.get('contactMethod'), 20)
+    telegram = clean(data.get('telegram'), 80)
+    message = clean(data.get('message'), 300)
+    if not name or not surname or not phone or data.get('consent') is not True:
         return response(400, {'error': 'missing_required_fields'}, origin)
+    if not re.fullmatch(r'[+0-9()\-\s]{10,30}', phone) or len(re.sub(r'\D', '', phone)) < 10:
+        return response(400, {'error': 'invalid_phone'}, origin)
+    if contact_method not in {'telegram', 'whatsapp', 'max', 'phone'}:
+        return response(400, {'error': 'invalid_contact_method'}, origin)
+    if contact_method == 'telegram' and not re.fullmatch(r'@[A-Za-z0-9_]{5,32}', telegram):
+        return response(400, {'error': 'invalid_telegram'}, origin)
     if data.get('source') != 'trevoga':
         return response(400, {'error': 'invalid_source'}, origin)
 
@@ -64,10 +74,14 @@ def handler(event, context):
     if not token or not chat_id:
         return response(503, {'error': 'service_unavailable'}, origin)
 
+    contact_labels = {'telegram': 'Telegram', 'whatsapp': 'WhatsApp',
+                      'max': 'MAX', 'phone': 'Телефонный звонок'}
     text = '\n'.join([
         'Новая заявка · программа «Тревога»',
-        f'Имя: {name}',
-        f'Контакт: {contact}',
+        f'Имя: {name} {surname}',
+        f'Телефон: {phone}',
+        f'Удобный способ связи: {contact_labels[contact_method]}',
+        *([f'Telegram: {telegram}'] if contact_method == 'telegram' else []),
         f'Запрос: {message or "не указан"}',
     ])
     request = urllib.request.Request(
