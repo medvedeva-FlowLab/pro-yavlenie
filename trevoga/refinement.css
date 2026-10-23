@@ -390,6 +390,11 @@
 }
 .recognition-thoughts p:nth-child(even) { padding-top: 22px; }
 .recognition-thoughts p:nth-child(7) { color: #756a61; }
+.recognition-intro { display: block; max-width: 800px; margin-bottom: 30px; }
+.recognition-intro h2 { margin-bottom: 13px; }
+.recognition-intro .heading-aside { max-width: 640px; margin: 0; font-size: 1rem; line-height: 1.6; }
+.recognition-question { margin: 34px 0 16px; font-family: Sora, Manrope, Arial, sans-serif; font-size: clamp(2.3rem, 4vw, 3.8rem); font-weight: 600; line-height: 1.15; letter-spacing: -.035em; }
+.recognition-question + .recognition-summary { margin-top: 0; }
 
 .cycle-core {
   top: 13%;
@@ -449,10 +454,13 @@
   .includes-stage { min-height: 0; }
 }
 @media (max-width: 600px) {
+  .recognition-intro { margin-bottom: 25px; }
+  .recognition-intro .heading-aside { font-size: .94rem; }
   .recognition-thoughts { display: flex; flex-direction: column; gap: 23px; margin: 9px 0 34px; }
   .recognition-thoughts p:nth-child(n) { width: 94%; align-self: flex-start; }
   .recognition-thoughts p:nth-child(even) { align-self: flex-end; padding-top: 0; }
   .recognition-thoughts p:nth-child(4), .recognition-thoughts p:nth-child(7) { margin-left: 0; }
+  .recognition-question { margin: 20px 0 14px; font-size: 2.55rem; }
   .cycle-orbit { height: 550px; margin-bottom: 64px; }
   .cycle-node-one { width: 250px; }
   .cycle-node-two { left: 82%; width: 132px; }
