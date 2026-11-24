@@ -73,7 +73,7 @@
               </article>
               <article class="story-card">
                 <strong>Стоимость</strong>
-                <span class="story-value">3 000 руб.</span>
+                <span class="story-value">4 000 руб.</span>
               </article>
               <article class="story-card">
                 <strong>Ритм встреч</strong>
