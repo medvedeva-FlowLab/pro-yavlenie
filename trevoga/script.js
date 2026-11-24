@@ -12,6 +12,8 @@
   const telegramField = document.getElementById('leadTelegramField');
   const telegramInput = document.getElementById('leadTelegram');
   const fromThreads = new URLSearchParams(window.location.search).get('utm_source')?.toLowerCase() === 'threads';
+  const leadSourceTag = fromThreads ? '[Threads] ' : '';
+  if (fromThreads) form.elements.message.maxLength = 300 - leadSourceTag.length;
   const greeting = fromThreads
     ? 'Здравствуйте, Настя! Пишу из Threads. Хотелось бы познакомиться и узнать, подойдёт ли мне программа про тревогу 🌿'
     : 'Здравствуйте, Настя! Мне хотелось бы познакомиться и узнать, подойдёт ли мне программа про тревогу 🌿';
@@ -83,7 +85,7 @@
       phone: form.elements.phone.value.trim(),
       contactMethod: form.elements.contactMethod.value,
       telegram: form.elements.telegram.value.trim(),
-      message: form.elements.message.value.trim(),
+      message: `${leadSourceTag}${form.elements.message.value.trim()}`.trim(),
       consent: form.elements.consent.checked,
       company: form.elements.company.value,
       source: 'trevoga',
