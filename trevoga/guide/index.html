@@ -42,7 +42,7 @@
       <p class="lead">Можно очень тщательно всё продумывать и всё равно месяцами не решаться на шаг. Эта карта помогает разобрать один конкретный момент: что происходило до паузы и что случилось после.</p>
       <div class="actions">
         <a class="button primary" href="./map.pdf" type="application/pdf" data-analytics-goal="guide_pdf_open">Открыть карту в PDF</a>
-        <a class="button secondary" href="https://anastasiamedvedeva.ru/trevoga/?utm_source=guide&amp;utm_medium=resource">Как я работаю с тревогой</a>
+        <a class="button secondary" href="https://anastasiamedvedeva.ru/trevoga/?utm_source=guide&amp;utm_medium=resource" data-program-link>Как я работаю с тревогой</a>
       </div>
       <p class="file-note">Можно сохранить или распечатать и заполнить от руки.</p>
       <section class="preview" aria-labelledby="inside-title">
@@ -63,5 +63,16 @@
     <p>С твоего разрешения Яндекс Метрика поможет понять, откуда приходят посетители и открывают ли они карту. Без разрешения счётчик не загружается. Подробнее — в <a href="../../privacy/">информации об обработке данных</a>.</p>
     <div class="analytics-actions"><button type="button" data-analytics-decline>Не разрешать</button><button type="button" data-analytics-accept>Разрешить</button></div>
   </div>
+  <script>
+    const source = new URLSearchParams(window.location.search).get('utm_source');
+    if (source?.toLowerCase() === 'threads') {
+      const link = document.querySelector('[data-program-link]');
+      const url = new URL(link.href);
+      url.searchParams.set('utm_source', 'threads');
+      url.searchParams.set('utm_medium', 'social');
+      url.searchParams.set('utm_content', 'guide_to_program');
+      link.href = url.toString();
+    }
+  </script>
 </body>
 </html>
