@@ -1,6 +1,5 @@
 (() => {
-  // Set this to the Yandex Metrica counter ID after the counter is created.
-  const counterId = 0;
+  const counterId = 114646653;
   if (!counterId) return;
 
   const notice = document.querySelector('[data-analytics-notice]');
@@ -54,7 +53,7 @@
 
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://mc.yandex.ru/metrika/tag.js';
+    script.src = `https://mc.yandex.ru/metrika/tag.js?id=${counterId}`;
     document.head.appendChild(script);
 
     window.ym(counterId, 'init', {
