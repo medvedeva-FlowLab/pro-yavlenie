@@ -4,8 +4,8 @@ window.siteConfig = {
     role: "психолог-консультант",
   },
   pricing: {
-    amount: "3&nbsp;000&nbsp;руб.",
-    label: "Стоимость консультации<br />3&nbsp;000&nbsp;руб.",
+    amount: "4&nbsp;000&nbsp;руб.",
+    label: "Стоимость консультации<br />4&nbsp;000&nbsp;руб.",
   },
   contacts: {
     bookingLink: "https://t.me/aanastasia_me",
