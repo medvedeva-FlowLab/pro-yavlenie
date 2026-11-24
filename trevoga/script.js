@@ -11,7 +11,10 @@
   const contactMethod = document.getElementById('leadContactMethod');
   const telegramField = document.getElementById('leadTelegramField');
   const telegramInput = document.getElementById('leadTelegram');
-  const greeting = 'Здравствуйте, Настя! Мне хотелось бы познакомиться и узнать, подойдёт ли мне программа про тревогу 🌿';
+  const fromThreads = new URLSearchParams(window.location.search).get('utm_source')?.toLowerCase() === 'threads';
+  const greeting = fromThreads
+    ? 'Здравствуйте, Настя! Пишу из Threads. Хотелось бы познакомиться и узнать, подойдёт ли мне программа про тревогу 🌿'
+    : 'Здравствуйте, Настя! Мне хотелось бы познакомиться и узнать, подойдёт ли мне программа про тревогу 🌿';
   const telegramUrl = `https://t.me/aanastasia_me?text=${encodeURIComponent(greeting)}`;
   const whatsappUrl = `https://wa.me/79858852191?text=${encodeURIComponent(greeting)}`;
   dialog.querySelector('[data-messenger="telegram"]').href = telegramUrl;
